@@ -1,16 +1,21 @@
+import Head from 'next/head';
 import Layout from '../../components/layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 
 export default function Post({ postData }) {
   return (
     <Layout>
+      <Head>
       {postData.title}
+      </Head>
       <br />
       {postData.id}
       <br />
       {postData.date}
+      <br />
+      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </Layout>
-  )
+  );
 }
 
 export async function getStaticPaths() {
